@@ -1,0 +1,189 @@
+@font-face {
+  font-family: Roboto;
+  src: url("./assets/RobotoLight.woff");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("./assets/RobotoBold.woff");
+  font-weight: 700;
+}
+
+.preload {
+  display: flex;
+  height: 70vh;
+  width: 100%;  
+  align-items: center;  
+  justify-content: center;
+}
+
+.preload__img {
+  animation-name: preload;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes preload {
+  from {
+    transform: rotate(0);
+  } to {
+    transform: rotate(360deg);
+  }
+}
+
+.header {  
+  padding-top: 21px;
+  padding-bottom: 20px;  
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.form__input {
+  position: relative;
+}
+
+.form__search {
+  width: 500px;
+  border-radius: 22px;
+  border: 1px solid #E6E6E6;
+  height: 44px;
+  padding-left: 20px;
+}
+
+.form__select {
+  width: 320px;
+  border-radius: 22px;
+  border: 1px solid #E6E6E6;
+  height: 44px;
+}
+
+.form__submit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 44px;
+  height: 44px;
+  background-image: url("./assets/ep_search.svg");background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+}
+
+.main { 
+  padding-top: 20px;
+}
+
+.hr {  
+  height: 1px;
+  background-color: #E6E6E6;
+}
+
+.hr_bottom {
+  margin-bottom: 40px;
+}
+
+.main__title {
+  position: relative;
+  font-weight: 700;
+  font-size: 26px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.cards {
+  display: flex;
+  gap: 40px 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-basis: 260px;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.card__img {
+  height: 200px;
+  max-width: 100%;
+  object-fit: cover;  
+}
+
+.card__title {
+  position: relative;
+}
+
+.card__titleh2 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;  
+  height: 84px;
+  overflow: hidden;
+}
+
+.card__more {
+  position: absolute;
+  top: 2px;  
+  right: 0;
+  display: block;
+  height: 20px;
+  width: 20px;  
+  background-image: url("./assets/akar-icons_arrow-up-right.svg");
+  background-repeat: no-repeat;
+  background-position: top right;  
+  background-color: transparent;
+  border: none;
+}
+
+.card__descript {
+  height: 32px;
+  overflow: hidden;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #8E8E8E;
+}
+
+.card-footer__data-day {
+  margin-right: 12px;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 22px;
+  padding-bottom: 30px;  
+}
+
+.footer__copyright {
+  font-size: 12px;
+  align-self: flex-end;  
+}
+
+.social {
+  display: flex;
+  gap: 15px;
+}
+
+
