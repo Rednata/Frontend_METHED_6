@@ -12,16 +12,16 @@ const search = document.querySelector('.form__search');
 export const getSearch = async (value, callback, length) => {
 
   // =========== Загрузка с API_NEWS  =============
-  const tempApi = await fetch(`https://newsapi.org/v2/everything?q=${value}`, {
-    headers: {
-      'X-Api-Key': '6e757689b57443ceb98baa29a280c31c'
-    },
-  });
-   const data = await tempApi.json();
+  // const tempApi = await fetch(`https://newsapi.org/v2/everything?q=${value}`, {
+  //   headers: {
+  //     'X-Api-Key': '6e757689b57443ceb98baa29a280c31c'
+  //   },
+  // });
+  //  const data = await tempApi.json();
    
-    // ============  Загрузка д из search.json  ==============
-    // const temp = await fetch(`./jsonAPI/search.json?q=${value}`);
-    // const data = await temp.json();
+    // ============  Загрузка из search.json  ==============
+    const temp = await fetch(`./jsonAPI/search.json?q=${value}`);
+    const data = await temp.json();
 
     const searchArray = [];
     for (let i = 0; i < length; i++) {          
@@ -42,7 +42,7 @@ export const controlSearch = () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();   
     const newsLoad = allNews();    
-    removePreload();
+    // removePreload();
    
     newsLoad.then(data => {
       const newsSearch = loadNews(data[0]);

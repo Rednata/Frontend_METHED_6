@@ -6,19 +6,34 @@ import { loadPage } from './script/loadPage.js';
 import { preload } from './script/preload.js';
 import { removePreload } from './script/preload.js';
 
-
+const isLoad = elem => {
+  return new Promise(resolve => {
+    const img = elem.querySelector('img');
+    img.addEventListener('load', () => {
+      resolve(elem)
+    })
+  })  
+}
 
 const init = () => {
   preload();
   const length = 8;
-  new Promise(resolve => {    
+  const t = new Promise(resolve => {    
     resolve(getNews(renderCard, length));
   })
   .then(data => {
-    removePreload();
-    loadPage(loadNews(data));
-  })      
-  controlSearch();
+    return data.map(elem => isLoad(elem))    
+  })
+  .then(data => {
+    return Promise.all(data).then(elem => loadNews(elem))
+  })
+  .then(data => {
+    removePreload()
+    loadPage(data)
+  })
+    
+
+    controlSearch();
 }
 
 init();
