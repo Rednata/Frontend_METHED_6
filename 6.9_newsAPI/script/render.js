@@ -1,10 +1,12 @@
-const renderCard = (data) => {
+const renderCard = (data) => {    
   const {title, description, publishedAt} = data;
   const card = document.createElement('li');
   card.classList.add('card');
   const author = data.author || '';
   
-  const urlToImage = data.urlToImage || '../assets/preloadIMG.jpg'  
+  const urlToImage = data.urlToImage 
+  // || '../assets/preloadIMG.jpg'  
+
 
   card.insertAdjacentHTML('afterbegin',
     `
