@@ -39,11 +39,11 @@ export const getSearch = async (value, length) => {
     form.addEventListener('submit', async(e) => {
       e.preventDefault();   
       const value = searchForm.value;
-      // const urlSearch = `https://newsapi.org/v2/everything?q=${value}`;
-      const urlSearch = `./jsonAPI/search.json?q=${value}`;
+      const urlSearch = `https://newsapi.org/v2/everything?q=${value}`;
+      // const urlSearch = `./jsonAPI/search.json?q=${value}`;
       const lengthSearch = 8;
-      // const urlNews = 'https://newsapi.org/v2/top-headlines?country=ru';
-      const urlNews = './jsonAPI/headlines.json';
+      const urlNews = 'https://newsapi.org/v2/top-headlines?country=ru';
+      // const urlNews = './jsonAPI/headlines.json';
       const lengthNews = 4;    
 
       const newsInfo = await fetchNews(urlNews, lengthNews);

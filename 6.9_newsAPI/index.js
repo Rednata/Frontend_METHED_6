@@ -10,8 +10,8 @@ import { controlSearch } from './script/search.js';
 
 const init = async() => {
   
-  // const url = 'https://newsapi.org/v2/top-headlines?country=ru'
-  const url = './jsonAPI/headlines.json';
+  const url = 'https://newsapi.org/v2/top-headlines?country=ru'
+  // const url = './jsonAPI/headlines.json';
   const length = 8;
   
   const news = await fetchNews(url, length);
