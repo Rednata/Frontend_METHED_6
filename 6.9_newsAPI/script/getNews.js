@@ -1,18 +1,7 @@
 import { loadNews } from './loadNews.js';
+import { loadPage } from './loadPage.js';
 import { preload, removePreload } from './preload.js';
 import { renderCard } from './render.js';
-
-
-
-const isLoad = (elem)  => {
-  return new Promise((resolve, reject) => {    
-    const img = new Image();    
-    img.src = elem.urlToImage;
-    img.addEventListener('load', () => {      
-        resolve(renderCard(elem))
-      })
-  })    
-}
 
 export const fetchNews = async(url, length) => {
   
@@ -22,23 +11,35 @@ export const fetchNews = async(url, length) => {
   //     'X-Api-Key': '6e757689b57443ceb98baa29a280c31c'
   //   },
   // });
-  // const resp1 = await resp.json();
+
     
   //  =========== Загрузка из headlines.json  ==========
-  // preload();
-
+  
+    preload();
     const resp = await fetch(url);
     const resp1 = await resp.json();
-  
+    
     const data = resp1.articles.slice(0, length);  
   
-    const newArray = data.map(elem => isLoad(elem));
-    return Promise.all(newArray)  
-      .then(data => {
-        // removePreload()      
+    const newsArray = data.map(elem => { 
+      return new Promise(resolve => {
+        const img = document.createElement('img');
+        img.src = elem.urlToImage;
+        img.addEventListener('load', () => {
+          img.src = elem.urlToImage || '../assets/preloadIMG.jpg' ;
+        })
+        resolve(elem)
+      })     
         
-        return loadNews(data);                
-    })  
+    });
+
+    return Promise.all(newsArray)      
+      .then(data => data.map(elem => renderCard(elem)))      
+      .then(data => {
+        const news = loadNews(data);
+        removePreload();
+        return news;
+      })                   
 }
 
 

@@ -1,4 +1,4 @@
-const renderCard = (data) => {    
+const renderCard = (data) => {      
   const {title, description, publishedAt} = data;
   const card = document.createElement('li');
   card.classList.add('card');
@@ -10,9 +10,7 @@ const renderCard = (data) => {
 
   card.insertAdjacentHTML('afterbegin',
     `
-      <img class="card__img" src=${urlToImage} 
-      onerror=this.src="../assets/preloadIMG.jpg"
-      ></img>                
+      <img class="card__img" src=${urlToImage}></img>                
       <div class="card__title">
         <h2 class="card__titleh2">${title}
         </h2>
