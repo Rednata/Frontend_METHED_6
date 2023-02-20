@@ -1,26 +1,22 @@
-export const loadImg = (data) => {
-  const cards = document.querySelectorAll('.card');
+export const loadImg = async (dataPromise) => {
+  const data = await(dataPromise);
+  const cards = document.querySelectorAll('.card');  
 
-  data.forEach( (elem, ind) => {
-    
-      const img = document.createElement('img');
-      img.classList.add('card__img');
-      img.src = data[ind].urlToImage || '../assets/preloadIMG.jpg';
-    
-      img.addEventListener('load', () => {      
-        if (cards[ind].querySelector('.placeholder-picture')) {
-         cards[ind].querySelector('.placeholder-picture').remove()
-        }
-        cards[ind].prepend(img);
+  cards.forEach( (elem, ind) => {
+    const img = new Image();
+    img.src = data[ind].urlToImage || '../assets/preloadIMG.jpg';
+
+    new Promise(resolve => {        
+      img.addEventListener('load', () => {    
+        console.log(img);            
+        resolve(img);
       })
-      img.addEventListener('error', () => {            
-        if (cards[ind].querySelector('.placeholder-picture')) {
-          cards[ind].querySelector('.placeholder-picture').remove()
-         }
+      img.addEventListener('error', () => {                      
         img.src = '../assets/preloadIMG.jpg';
-        cards[ind].prepend(img);
+        resolve(img);
       }) 
-    
-  })
+    })
+    .then(() => elem.querySelector('img').src = img.src)          
+  })      
 }
 

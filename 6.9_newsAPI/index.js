@@ -1,5 +1,7 @@
-  //  API News:
   // const url = 'https://newsapi.org/v2/top-headlines?country=ru'
+  //  API News:
+  
+  // const url = 'https://newsapi.org/v2/top-headlines?country='
   // const resp = await fetch(url, {
   //   headers: {
   //     'X-Api-Key': '6e757689b57443ceb98baa29a280c31c'
@@ -21,45 +23,27 @@ const url = './jsonAPI/headlines.json';
 // const urlSearch = `./jsonAPI/search.json?q=${value}`;
 
 const init = async() => {
-  const data = await fetchNews(url);  
+  preload();
+  const response = fetchNews(url);  
+
+  response
+    .then(data => {
+    return data.map(elem => renderCard(elem));  
+    })
+    .then(data => {
+      const list = document.createElement('ul');
+      list.classList.add('container', 'cards');
+      list.append(...data);  
+      return list
+    })
+    .then(data => {    
+      removePreload()
+      loadPage(data); 
+      loadImg(response)
+    })
   
-  
-  
-  const newsPlaceholderImg = data.map(elem => renderCard(elem));
-  const list = document.createElement('ul');
-  list.classList.add('container', 'cards');
-  list.append(...newsPlaceholderImg);
+  // controlSearch();
 
-  loadPage(list);
-  loadImg(data);
-
-
-
-
-
-  // Promise.all(data.map(elem => loadNewsImgs(elem)))
-  //   .then(data => {
-  //     const liImg = document.querySelectorAll('.card');
-  //     liImg.forEach((li, ind) => {
-  //       li.querySelector('.placeholder-picture').remove();
-  //       const img = document.createElement('img');
-  //       img.classList.add('card__img');
-  //       img.src = data[ind].urlToImage;
-  //       li.prepend(img);
-  //     })
-  //   });
-
-
-  //   .then(data => data.map(elem => renderCard(elem)))
-  //   .then(data => {
-  //     const list = document.createElement('ul');
-  //     list.classList.add('container', 'cards');
-  //     list.append(...data);
-  //     return list
-  //   })
-  //   .then(data => {
-  //     removePreload();
-  //     loadPage(data)});
 }
 
 init();

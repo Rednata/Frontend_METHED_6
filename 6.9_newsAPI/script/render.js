@@ -14,7 +14,7 @@ const renderCard = (data) => {
 
   card.insertAdjacentHTML('afterbegin',
     `               
-    <div class="placeholder-picture"></div> 
+    <img class="card__img"></img>   
       <div class="card__title">
         <h2 class="card__titleh2">${title}
         </h2>

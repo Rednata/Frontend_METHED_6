@@ -120,16 +120,11 @@
   line-height: 16px;
 }
 
-.placeholder-picture {
-  height: 200px;
-  max-width: 100%;
-  background-color: rgb(206, 182, 182);
-}
-
 .card__img {
   height: 200px;
   max-width: 100%;
   object-fit: cover;  
+  background-color: rgba(148, 184, 190, 0.5);
 }
 
 .card__title {
