@@ -120,6 +120,12 @@
   line-height: 16px;
 }
 
+.placeholder-picture {
+  height: 200px;
+  max-width: 100%;
+  background-color: rgb(206, 182, 182);
+}
+
 .card__img {
   height: 200px;
   max-width: 100%;

@@ -1,4 +1,5 @@
 export const loadPage = (list) => {  
+  console.log(list)
   document.querySelector('main').insertAdjacentHTML('beforeend',
     `
     
