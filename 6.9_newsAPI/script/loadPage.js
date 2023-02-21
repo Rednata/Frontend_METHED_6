@@ -1,8 +1,8 @@
+//  =============== HEADLINES =========================
 export const loadPage = (list) => {  
-  console.log(list)
+  const main = document.querySelector('main');
   document.querySelector('main').insertAdjacentHTML('beforeend',
-    `
-    
+    `    
     <section class="main__news">
     <div class="hr"></div>
     <div class="container">
@@ -11,16 +11,14 @@ export const loadPage = (list) => {
   </h2>
     </div>      
     <div class="hr hr_bottom"></div>
-    </section>  
-    
+    </section>      
     `    
     );
   document.querySelector('.main__news').append(list);
 }
 
 //  ===============  SEARCH =========================
-export const loadPageSearch = (listSearch, search) => {
-  console.log(search);
+export const loadPageSearch = (listSearch, search) => {  
   const main = document.querySelector('main');
       main.innerHTML = '';
       main.insertAdjacentHTML('afterbegin',

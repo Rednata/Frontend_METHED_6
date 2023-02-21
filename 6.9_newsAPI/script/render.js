@@ -41,5 +41,13 @@ const renderCard = (data) => {
   return card;
 };
 
+export const renderNews = (newsArray) => {  
+  const news = newsArray.map(elem => renderCard(elem));
 
-export {renderCard};
+  const list = document.createElement('ul');
+  list.classList.add('container', 'cards');
+  list.append(...news);  
+
+  return list    
+}
+
