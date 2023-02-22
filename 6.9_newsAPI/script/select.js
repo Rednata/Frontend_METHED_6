@@ -1,9 +1,7 @@
 import { fetchRequest } from './fetchRequest.js';
 import { renderNews} from './render.js';
 import {preload, removePreload} from './preload.js';
-import {loadImg} from './___loadImg.js';
 import { loadPage } from './loadPage.js';
-
 
 export const select = () => {
   const selectForm = document.querySelector('.select');
