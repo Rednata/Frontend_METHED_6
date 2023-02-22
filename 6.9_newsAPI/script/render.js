@@ -1,17 +1,11 @@
 const renderCard = (data) => {      
-  const {title, description, publishedAt} = data;
   const card = document.createElement('li');
   card.classList.add('card');
   const author = data.author || '';
+  const description = data.description || '';
+  const publishedAt = data.publishedAt || '';
+  const title = data.title|| '';
   
-  const urlToImage = data.urlToImage 
-  // || '../assets/preloadIMG.jpg'  
-  // <img class="card__img" src=${urlToImage}
-  // onerror="this.src = '../assets/preloadIMG.jpg'"
-  // ></img> 
-  
-  // <img class="card__img" src=${urlToImage}></img>    
-
   card.insertAdjacentHTML('afterbegin',
     `               
     <img class="card__img"></img>   
@@ -40,19 +34,21 @@ const renderCard = (data) => {
   );
 
   const img = new Image();
-  img.src = data.urlToImage
-  try {    
-    img.addEventListener('load', () => {
-      const currentImg = card.querySelector('img')
-      currentImg.src = data.urlToImage;
-    });
-      img.addEventListener('error', () => {
+  if (data.urlToImage === 'null') {
+    img.src = '../assets/preloadIMG.jpg';    
+  }
+  else {
+    img.src = data.urlToImage;
+  }
+  img.addEventListener('load', () => {
+    const currentImg = card.querySelector('img')
+    currentImg.src = data.urlToImage;
+  });
+  img.addEventListener('error', () => {
     const currentImg = card.querySelector('img')    
     currentImg.src = '../assets/preloadIMG.jpg'
   })
-  } catch(err) {
-    console.log('err')
-  }
+  
   return card;
 };
 
