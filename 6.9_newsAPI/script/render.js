@@ -38,6 +38,21 @@ const renderCard = (data) => {
       </div> 
     `,
   );
+
+  const img = new Image();
+  img.src = data.urlToImage
+  try {    
+    img.addEventListener('load', () => {
+      const currentImg = card.querySelector('img')
+      currentImg.src = data.urlToImage;
+    });
+      img.addEventListener('error', () => {
+    const currentImg = card.querySelector('img')    
+    currentImg.src = '../assets/preloadIMG.jpg'
+  })
+  } catch(err) {
+    console.log('err')
+  }
   return card;
 };
 

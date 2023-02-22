@@ -2,7 +2,6 @@ import { fetchRequest } from './fetchRequest.js';
 import {renderNews} from './render.js';
 import {preload, removePreload} from './preload.js';
 import {loadPage, loadPageSearch} from './loadPage.js';
-import {loadImg} from './loadImg.js';
 
 export const controlSearch = () => {
   
@@ -33,14 +32,6 @@ export const controlSearch = () => {
         removePreload();
         loadPageSearch(data[0], valueSearch);
         loadPage(data[1]);
-      })
-      .then(() => {
-        const mainSearch = document.querySelector('.main__search');
-        loadImg(response1, mainSearch)
-      })
-      .then(() => {
-        const mainNews = document.querySelector('.main__news');
-        loadImg(response2, mainNews)
       })
   })
 }

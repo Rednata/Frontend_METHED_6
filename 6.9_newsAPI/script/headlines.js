@@ -2,7 +2,7 @@ import { fetchRequest } from './fetchRequest.js';
 import {renderNews} from './render.js';
 import {preload, removePreload} from './preload.js';
 import {loadPage} from './loadPage.js';
-import {loadImg} from './loadImg.js';
+import {loadImg} from './___loadImg.js';
 
 export const headlines = (url, count) => {
   preload();
@@ -13,7 +13,5 @@ export const headlines = (url, count) => {
     .then(data => {    
       removePreload()
       loadPage(data); 
-      const mainNews = document.querySelector('.main__news');      
-      loadImg(response, mainNews)
     })
 }
