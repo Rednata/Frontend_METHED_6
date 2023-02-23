@@ -1,4 +1,4 @@
-const renderCard = (data) => {      
+const renderCard = (data) => {     
   const card = document.createElement('li');
   card.classList.add('card');
   const author = data.author || '';
@@ -9,10 +9,11 @@ const renderCard = (data) => {
   card.insertAdjacentHTML('afterbegin',
     `               
     <img class="card__img"></img>   
-      <div class="card__title">
-        <h2 class="card__titleh2">${title}
+      <div class="card__title">      
+        <h2 class="card__titleh2">
+          <a class="card__link" href="${data.url}" target="_blank">${title}</a>
         </h2>
-        <button class="card__more"></button>
+        <a class="card__more" href="${data.url}" target="_blank"></a>
       </div>          
       <p class="card__descript">
         ${description}

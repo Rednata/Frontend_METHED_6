@@ -128,7 +128,7 @@
 }
 
 .card__title {
-  position: relative;
+  display: flex;
 }
 
 .card__titleh2 {
@@ -136,21 +136,19 @@
   font-size: 16px;
   line-height: 21px;  
   height: 84px;
-  overflow: hidden;
+  overflow: hidden;  
+  width: 90%;
 }
 
-.card__more {
-  position: absolute;
-  top: 2px;  
-  right: 0;
+.card__more {  
   display: block;
   height: 20px;
-  width: 20px;  
+  width: 20px; 
   background-image: url("./assets/akar-icons_arrow-up-right.svg");
   background-repeat: no-repeat;
   background-position: top right;  
   background-color: transparent;
-  border: none;
+  border: none;  
 }
 
 .card__descript {
